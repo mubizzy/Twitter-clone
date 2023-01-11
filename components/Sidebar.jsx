@@ -16,6 +16,7 @@ const Sidebar = () => {
       </div>
       <div className="">
         <SidebarMenuItem text="Home" Icon={HomeIcon} active />
+        <SidebarMenuItem text="Notifications" Icon={BellIcon} />
       </div>
     </main>
   );
