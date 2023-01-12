@@ -17,8 +17,8 @@ const Sidebar = () => {
   return (
     <main>
       {" "}
-      <div>
-        {/* Twitter Logo */}
+      {/* Twitter Logo */}
+      <div className="hoverEffect p-0 hover:bg-blue-100 xl:px-1">
         <Image
           width="50"
           height="50"
