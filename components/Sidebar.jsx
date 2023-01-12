@@ -16,7 +16,13 @@ const Sidebar = () => {
       </div>
       <div className="">
         <SidebarMenuItem text="Home" Icon={HomeIcon} />
+        <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
         <SidebarMenuItem text="Notifications" Icon={BellIcon} />
+        <SidebarMenuItem text="Messages" Icon={InboxIcon} />
+        <SidebarMenuItem text="Bookmarks" Icon={BookmarkIcon} />
+        <SidebarMenuItem text="Lists" Icon={ClipboardIcon} />
+        <SidebarMenuItem text="Profile" Icon={UserIcon} />
+        <SidebarMenuItem text="More" Icon={DotsCircleHorizontalIcon} />
       </div>
     </main>
   );
