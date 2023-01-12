@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import SidebarMenuItem from "./SidebarMenuItem";
-import { BellIcon, HomeIcon } from "@heroicons/react/solid";
+import { HomeIcon } from "@heroicons/react/solid";
 import {
   BellIcon,
   BookmarkIcon,
@@ -18,12 +18,14 @@ const Sidebar = () => {
     <main>
       {" "}
       <div>
+        {/* Twitter Logo */}
         <Image
           width="50"
           height="50"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png"
         ></Image>
       </div>
+      {/* Menu */}
       <div className="">
         <SidebarMenuItem text="Home" Icon={HomeIcon} />
         <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
