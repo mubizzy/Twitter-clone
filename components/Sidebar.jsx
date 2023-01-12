@@ -26,7 +26,7 @@ const Sidebar = () => {
         ></Image>
       </div>
       {/* Menu */}
-      <div className="">
+      <div className="mt-4 mb-2.5 xl:items-start">
         <SidebarMenuItem text="Home" Icon={HomeIcon} />
         <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
         <SidebarMenuItem text="Notifications" Icon={BellIcon} />
@@ -36,6 +36,10 @@ const Sidebar = () => {
         <SidebarMenuItem text="Profile" Icon={UserIcon} />
         <SidebarMenuItem text="More" Icon={DotsCircleHorizontalIcon} />
       </div>
+      {/* Button */}
+      <button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline">
+        Tweet
+      </button>
     </main>
   );
 };
