@@ -1,9 +1,11 @@
 import React from "react";
-import { HomeIcon } from "@heroicons/react/solid";
+
 const SidebarMenuItem = ({ text, Icon, active }) => {
   return (
-    <div className="">
-      <Icon />
+    <div className="hoverEffect flex items-center text-gray-700 justify-center xl:justify-start text-lg space-x-3">
+      <Icon className="h-7" />
     </div>
   );
 };
+
+export default SidebarMenuItem;
