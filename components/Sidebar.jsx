@@ -2,6 +2,16 @@ import Image from "next/image";
 import React from "react";
 import SidebarMenuItem from "./SidebarMenuItem";
 import { BellIcon, HomeIcon } from "@heroicons/react/solid";
+import {
+  BellIcon,
+  BookmarkIcon,
+  ClipboardIcon,
+  DotsCircleHorizontalIcon,
+  DotsHorizontalIcon,
+  HashtagIcon,
+  InboxIcon,
+  UserIcon,
+} from "@heroicons/react/outline";
 
 const Sidebar = () => {
   return (
