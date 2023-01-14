@@ -1,3 +1,4 @@
+import { EmojiHappyIcon, PhotographIcon } from "@heroicons/react/outline";
 import React from "react";
 
 const Input = () => {
@@ -11,8 +12,13 @@ const Input = () => {
             rows="2"
             placeholder="What's happening?"
             value=""
-            onChange={(e) => setInput(e.target.value)}
           ></textarea>
+        </div>
+        <div className="">
+          <div className="">
+            <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+            <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+          </div>
         </div>
       </div>
     </div>
