@@ -5,10 +5,10 @@ import Input from "./Input";
 const Feed = () => {
   const post =[
     {
-      id:
-      name:g
-      username:
-      userimg:
+      id:"`1",
+      name:"Mubarak Ajibola",
+      username:"mubizy",
+      userimg:"",
 
     }
   ]  return (
