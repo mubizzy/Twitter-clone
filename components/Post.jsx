@@ -1,5 +1,5 @@
-const Post = () => {
-  return <div>Post</div>;
+const Post = ({ post }) => {
+  return <div>{post.id}</div>;
 };
 
 export default Post;

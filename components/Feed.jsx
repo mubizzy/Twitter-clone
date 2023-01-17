@@ -16,7 +16,7 @@ const Feed = () => {
       timestamp: "2 hours ago",
     },
     {
-      id: "1",
+      id: "2",
       name: "Mubarak Ajibola",
       username: "mubizzy",
       userimg:
@@ -35,8 +35,8 @@ const Feed = () => {
         </div>
       </div>
       <Input />
-      {posts.map((post) => (
-        <Post />
+      {post.map((post) => (
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );
