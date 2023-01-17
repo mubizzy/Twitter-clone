@@ -39,7 +39,7 @@ const Post = ({ post }) => {
           {post.text}
         </p>
         {/* post image */}
-        <img src={post.img} alt="" />
+        <img src={post.img} alt="" className="rounded-2xl mr-2" />
 
         {/* Icons */}
         <div
@@ -47,10 +47,10 @@ const Post = ({ post }) => {
         "
         >
           <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
-          <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
-          <HeartIcon className="h-5" />
-          <ShareIcon className="h-5" />
-          <ChartBarIcon className="h-5" />
+          <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
+          <HeartIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
+          <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+          <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
         </div>
       </div>
     </div>
