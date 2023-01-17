@@ -1,6 +1,7 @@
 import React from "react";
 import { SparklesIcon } from "@heroicons/react/outline";
 import Input from "./Input";
+import Post from "./Post";
 
 const Feed = () => {
   const post = [
@@ -34,6 +35,9 @@ const Feed = () => {
         </div>
       </div>
       <Input />
+      {posts.map((post) => (
+        <Post />
+      ))}
     </div>
   );
 };
