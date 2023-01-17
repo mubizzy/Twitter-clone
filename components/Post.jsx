@@ -26,8 +26,10 @@ const Post = ({ post }) => {
             <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">
               {post.name}
             </h4>
-            <span>{post.username}</span>
-            <span>{post.timestamp}</span>
+            <span className="text-sm sm:text-[15px]">@{post.username}-</span>
+            <span className="text-sm sm:text-[15px] hover:underline">
+              {post.timestamp}
+            </span>
           </div>
           {/* dot icon */}
           <DotsHorizontalIcon className="h-10 hoverEffect w-10 hover:bg-sky-100 hover:text-sky-500 p-2 " />
