@@ -22,13 +22,15 @@ const Post = ({ post }) => {
 
         <div className="flex items-center justify-between">
           {/* post user info */}
-          <div className="">
-            <h4>{post.name}</h4>
+          <div className="flex items-center space-x-1 whitespace-nowrap">
+            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">
+              {post.name}
+            </h4>
             <span>{post.username}</span>
             <span>{post.timestamp}</span>
-            {/* dot icon */}
-            <DotsHorizontalIcon className="h-10 hoverEffect w-10 hover:bg-sky-100 hover:text-sky-500 p-2 " />
           </div>
+          {/* dot icon */}
+          <DotsHorizontalIcon className="h-10 hoverEffect w-10 hover:bg-sky-100 hover:text-sky-500 p-2 " />
         </div>
         {/* post text */}
         <p>{post.text}</p>
