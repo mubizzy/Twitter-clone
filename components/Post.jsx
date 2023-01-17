@@ -35,17 +35,19 @@ const Post = ({ post }) => {
           <DotsHorizontalIcon className="h-10 hoverEffect w-10 hover:bg-sky-100 hover:text-sky-500 p-2 " />
         </div>
         {/* post text */}
-        <p>{post.text}</p>
+        <p className="text-gray-800 text-[15px sm:text-[16px] mb-2">
+          {post.text}
+        </p>
         {/* post image */}
         <img src={post.img} alt="" />
 
         {/* Icons */}
         <div
-          className="
+          className="flex justify-between text-gray-500 p-2
         "
         >
-          <ChatIcon className="h-5" />
-          <TrashIcon className="h-5" />
+          <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+          <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
           <HeartIcon className="h-5" />
           <ShareIcon className="h-5" />
           <ChartBarIcon className="h-5" />
