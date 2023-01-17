@@ -4,7 +4,7 @@ import Input from "./Input";
 import Post from "./Post";
 
 const Feed = () => {
-  const post = [
+  const data = [
     {
       id: "1",
       name: "Mubarak Ajibola",
@@ -35,7 +35,7 @@ const Feed = () => {
         </div>
       </div>
       <Input />
-      {post.map((post) => (
+      {data.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </div>
