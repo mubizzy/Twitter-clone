@@ -21,8 +21,8 @@ const Feed = () => {
       userimg:
         "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z3V5fGVufDB8fDB8fA%3D%3D&w=1000&q=80",
       img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
-      text: "nice view!",
-      timestamp: "2 hours ago",
+      text: "wow!",
+      timestamp: "1 hours ago",
     },
   ];
   return (
