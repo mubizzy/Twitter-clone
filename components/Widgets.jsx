@@ -1,4 +1,5 @@
 import { SearchIcon } from "@heroicons/react/outline";
+import News from "./News";
 
 const Widgets = ({ newsResults }) => {
   return (
@@ -14,7 +15,7 @@ const Widgets = ({ newsResults }) => {
         </div>
       </div>
       {newsResults.map((article) => (
-        <p>{article.title}</p>
+        <News key={article.title} />
       ))}
     </div>
   );
