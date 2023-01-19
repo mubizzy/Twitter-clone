@@ -15,7 +15,7 @@ const Widgets = ({ newsResults }) => {
         </div>
       </div>
       {newsResults.map((article) => (
-        <News key={article.title} />
+        <News key={article.title} article={article} />
       ))}
     </div>
   );
