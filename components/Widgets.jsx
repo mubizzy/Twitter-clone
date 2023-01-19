@@ -1,6 +1,6 @@
 import { SearchIcon } from "@heroicons/react/outline";
 
-const Widgets = () => {
+const Widgets = ({newsResults}) => {
   return (
     <div className="xl:w-[600px] hidden lg:inline ml-8 space-y-5 top-0 left-1">
       <div className="w-[90%] xl:w-[75%] sticky top-0 bg-white py-1.5 z-50">
@@ -13,8 +13,13 @@ const Widgets = () => {
           />
         </div>
       </div>
+      {newsResults.map (article)=>
+      <p>{article.title}<p/>
+      
+      }
     </div>
-  );
-};
+);
+
+}
 
 export default Widgets;
