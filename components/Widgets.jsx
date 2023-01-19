@@ -5,7 +5,10 @@ const Widgets = () => {
   return (
     <div>
       <div className="">
-        <SearchIcon />
+        <div className="">
+          <SearchIcon className="h-5" />
+          <input type="text" placeholder="Search Twitter" />
+        </div>
       </div>
     </div>
   );
