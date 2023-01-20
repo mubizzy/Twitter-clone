@@ -2,7 +2,7 @@ import { SearchIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import News from "./News";
 
-const Widgets = ({ newsResults }) => {
+const Widgets = ({ newsResults, randomUsersResults }) => {
   const [articleNum, setArticleNum] = useState(3);
   return (
     <div className="xl:w-[600px] hidden lg:inline ml-8 space-y-5 top-0 left-1">
@@ -28,6 +28,9 @@ const Widgets = ({ newsResults }) => {
         >
           Show more
         </button>
+      </div>
+      <div className="sticky top-16 text-gray-700 space-y-3 bg-gray-100 pt-2 rounded-xl w-[90%] xl:w-[75%]">
+        <h4 className="font-bold text-xl px-4">Who to follow</h4>
       </div>
     </div>
   );
