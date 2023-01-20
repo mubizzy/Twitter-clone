@@ -14,9 +14,12 @@ const Widgets = ({ newsResults }) => {
           />
         </div>
       </div>
-      {newsResults.map((article) => (
-        <News key={article.title} article={article} />
-      ))}
+      <div>
+        <h4 className="font-bold text-xl px-4">Whats happening</h4>
+        {newsResults.map((article) => (
+          <News key={article.title} article={article} />
+        ))}
+      </div>
     </div>
   );
 };
