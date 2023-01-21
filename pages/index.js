@@ -19,7 +19,10 @@ export default function Home({ newsResults }) {
         <Feed />
 
         {/* Widgets */}
-        <Widgets newsResults={newsResults.articles} />
+        <Widgets
+          newsResults={newsResults.articles}
+          randomUsersResults={randomUsersResults.results}
+        />
       </main>
     </div>
   );
@@ -32,14 +35,14 @@ export async function getServerSideProps() {
     "https://saurav.tech/NewsAPI/top-headlines/category/business/us.json"
   ).then((res) => res.json());
 
-  const res = await fetch(
+  const randomUsersResults = await fetch(
     "https://randomuser.me/api/?results=30&inc=name,login,picture"
-  );
+  ).then((res) => res.json());
 
-  randomUsersResults = await res.json();
   return {
     props: {
       newsResults,
+      randomUsersResults,
     },
   };
 }
