@@ -45,7 +45,7 @@ const Widgets = ({ newsResults, randomUsersResults }) => {
               className="rounded-full"
               width="40"
             />
-            <div className="">
+            <div className="truncate ml-4 leading-5">
               <h4 className="font-bold hover:underline text-[14px] truncate">
                 {randomUser.login.username}
               </h4>
@@ -58,7 +58,12 @@ const Widgets = ({ newsResults, randomUsersResults }) => {
             </button>
           </div>
         ))}
-        <div className="flex items-center px-4 py-2  cursor-pointer hover:bg-gray-200 transition duration-500 ease-out"></div>
+        <button
+          onClick={() => setRandomUserNum(randomUserNum + 3)}
+          className="text-blue-300 pl-4 pb-3 hover:text-blue-400"
+        >
+          Show more
+        </button>
       </div>
     </div>
   );
