@@ -1,6 +1,6 @@
 import { getProviders } from "next-auth/react";
 
-const signin = () => {
+const signin = ({ providers }) => {
   return (
     <div>
       {" "}
