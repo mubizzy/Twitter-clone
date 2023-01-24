@@ -9,7 +9,7 @@ const signin = ({ providers }) => {
         alt="twitter image inside a phone"
         className=""
       />
-         <div className="">
+      <div className="">
         <div className="flex flex-col items-center">
           <img
             className="w-36 object-cover"
@@ -19,6 +19,14 @@ const signin = ({ providers }) => {
           <p className="text-center text-sm italic my-10">
             This app is created for learning purposes
           </p>
+          <button
+            onClick={onGoogleClick}
+            className="bg-red-400 rounded-lg p-3 text-white hover:bg-red-500"
+          >
+            Sign in with Google
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
