@@ -12,8 +12,9 @@ import {
   InboxIcon,
   UserIcon,
 } from "@heroicons/react/outline";
-
+import { useSession } from "next-auth/react";
 const Sidebar = () => {
+  const { data: session } = useSession();
   return (
     <main>
       <div className="hidden sm:flex flex-col p-2 xl:items-start fixed h-full xl:ml-24">
@@ -42,7 +43,18 @@ const Sidebar = () => {
           Tweet
         </button>
         {/* Mini-Profile */}
-        <div className="hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto"></div>
+        <div className="hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto">
+          <img
+            src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z3V5fGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+            alt="user-img"
+            className="h-10 w-10 rounded-full xl:mr-2"
+          />
+          <div className="leading-5 hidden xl:inline">
+            <h4 className="font-bold"></h4>
+            <p className="text-gray-500"></p>
+          </div>
+          <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline" />
+        </div>
       </div>
     </main>
   );
