@@ -7,7 +7,7 @@ const Input = () => {
   return (
     <div className="flex  border-b border-gray-200 p-3 space-x-3">
       <img
-        src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z3V5fGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+        src={session.user.image}
         alt="pics"
         className="h-11 w-11 rounded-full cursor-pointer hover:brightness-95"
       />
