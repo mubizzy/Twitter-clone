@@ -12,7 +12,7 @@ import {
   InboxIcon,
   UserIcon,
 } from "@heroicons/react/outline";
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 const Sidebar = () => {
   const { data: session } = useSession();
   return (
@@ -56,13 +56,14 @@ const Sidebar = () => {
             {/* Mini-Profile */}
             <div className="hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto">
               <img
-                src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z3V5fGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                onClick={signOut}
+                src={session.user.image}
                 alt="user-img"
                 className="h-10 w-10 rounded-full xl:mr-2"
               />
               <div className="leading-5 hidden xl:inline">
-                <h4 className="font-bold"></h4>
-                <p className="text-gray-500"></p>
+                <h4 className="font-bold">{session.user.name}</h4>
+                <p className="text-gray-500">{session.user.username}</p>
               </div>
               <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline" />
             </div>
