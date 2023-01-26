@@ -13,6 +13,6 @@ export default NextAuth({
   ],
 
   pages: {
-    signin: "/auth/sign-in",
+    signIn: "/auth/signin",
   },
 });

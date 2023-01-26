@@ -12,7 +12,7 @@ import {
   InboxIcon,
   UserIcon,
 } from "@heroicons/react/outline";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 const Sidebar = () => {
   const { data: session } = useSession();
   return (
@@ -47,7 +47,10 @@ const Sidebar = () => {
         {session ? (
           <>
             {" "}
-            <button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline">
+            <button
+              onClick={signIn}
+              className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline"
+            >
               Tweet
             </button>
             {/* Mini-Profile */}
@@ -65,7 +68,12 @@ const Sidebar = () => {
             </div>
           </>
         ) : (
-          <button>sigin in</button>
+          <button
+            onClick={signIn}
+            className="bg-blue-400 text-white rounded-full w-36 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline"
+          >
+            sigin in
+          </button>
         )}
       </div>
     </main>
