@@ -4,9 +4,14 @@ import { useState } from "react";
 
 const Input = () => {
   const { data: session } = useSession();
-  console.log(session);
-  const [input, setInput] = useState("");
 
+  const [input, setInput] = useState("");
+  const sendPost = async () => {
+    const docRef = await addDoc(collection(db, "posts"), {
+      id: session.user.uid,
+      text: input,
+    });
+  };
   return (
     <>
       {" "}
