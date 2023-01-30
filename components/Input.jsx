@@ -13,6 +13,8 @@ const Input = () => {
   const { data: session } = useSession();
   const filePickerRef = useRef(null);
   const [input, setInput] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const addImageToPost = () => {};
   const sendPost = async () => {
     const docRef = await addDoc(collection(db, "pos "), {
       id: session.user.uid,
@@ -45,10 +47,15 @@ const Input = () => {
             </div>
             <div className="flex items-center justify-between pt-2.5">
               <div className=" flex">
-                <div className="">
+                <div className="" onClick={() => filePickerRef.current.click()}>
                   {" "}
                   <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
-                  <input type="file" hidden ref={filePickerRef} />
+                  <input
+                    type="file"
+                    hidden
+                    ref={filePickerRef}
+                    onClick={addImageToPost}
+                  />
                 </div>
 
                 <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
