@@ -14,7 +14,16 @@ const Input = () => {
   const filePickerRef = useRef(null);
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const addImageToPost = () => {};
+  const addImageToPost = (e) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+
+    reader.onload = (readerEvent) => {
+      setSelectedFile(readerEvent.target.result);
+    };
+  };
   const sendPost = async () => {
     const docRef = await addDoc(collection(db, "pos "), {
       id: session.user.uid,
