@@ -1,18 +1,26 @@
 import { EmojiHappyIcon, PhotographIcon } from "@heroicons/react/outline";
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  Timestamp,
+} from "firebase/firestore";
 import { useSession, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { db } from "../firebase";
 
 const Input = () => {
   const { data: session } = useSession();
-
+  const filePickerRef = useRef(null);
   const [input, setInput] = useState("");
   const sendPost = async () => {
     const docRef = await addDoc(collection(db, "pos "), {
       id: session.user.uid,
       text: input,
+      userImg: session.user.image,
+      timestamp: serverTimestamp(),
     });
+    setInput("");
   };
   return (
     <>
@@ -37,7 +45,12 @@ const Input = () => {
             </div>
             <div className="flex items-center justify-between pt-2.5">
               <div className=" flex">
-                <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+                <div className="">
+                  {" "}
+                  <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+                  <input type="file" hidden ref={filePickerRef} />
+                </div>
+
                 <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
               </div>
               <button
