@@ -7,7 +7,7 @@ import {
 } from "firebase/firestore";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef } from "react";
-import { db } from "../firebase";
+import { db, storage } from "../firebase";
 
 const Input = () => {
   const { data: session } = useSession();
@@ -25,14 +25,26 @@ const Input = () => {
     };
   };
   const sendPost = async () => {
-    const docRef = await addDoc(collection(db, "pos "), {
+    const docRef = await addDoc(collection(db, "posts "), {
       id: session.user.uid,
       text: input,
       userImg: session.user.image,
       timestamp: serverTimestamp(),
     });
+    // Adding image to firebase storage
+    const imageRef = ref(storage, `posts/${docRef.id}/image`);
+
+    if (selectedFile) {
+      await uploadString(imageRef, selectedFile, "data_url").then(async () => {
+        const downloadURL = await getDownloadURL(imageRef);
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image: downloadURL,
+        });
+      });
+    }
     setInput("");
   };
+
   return (
     <>
       {" "}
