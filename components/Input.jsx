@@ -4,7 +4,10 @@ import {
   collection,
   serverTimestamp,
   Timestamp,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef } from "react";
 import { db, storage } from "../firebase";
@@ -14,6 +17,7 @@ const Input = () => {
   const filePickerRef = useRef(null);
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+
   const addImageToPost = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
@@ -24,25 +28,30 @@ const Input = () => {
       setSelectedFile(readerEvent.target.result);
     };
   };
+
   const sendPost = async () => {
     const docRef = await addDoc(collection(db, "posts "), {
       id: session.user.uid,
       text: input,
       userImg: session.user.image,
       timestamp: serverTimestamp(),
+      username: session.user.username,
     });
-    // Adding image to firebase storage
+    // Adding image to storage
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
     if (selectedFile) {
       await uploadString(imageRef, selectedFile, "data_url").then(async () => {
         const downloadURL = await getDownloadURL(imageRef);
-        await updateDoc(doc(db, "posts", docRef.id), {
-          image: downloadURL,
-        });
+        // await updateDoc(doc(db, "posts", docRef.id), {
+        //   image: downloadURL,
+        // });
       });
     }
     setInput("");
+
+    // setSelectedFile(null);
+    // setLoading(false);
   };
 
   return (
