@@ -72,7 +72,7 @@ const Sidebar = () => {
         ) : (
           <button
             onClick={signIn}
-            className="bg-blue-400 text-white rounded-full w-36 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline"
+            className="hoverEffect  flex items-center justify-center xl:justify-start mt-aut bg-blue-400 text-white rounded-full hover:bg-blue-500"
           >
             sigin in
           </button>
