@@ -1,13 +1,15 @@
 import { EmojiHappyIcon, PhotographIcon } from "@heroicons/react/outline";
+import { addDoc, collection } from "firebase/firestore";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
+import { db } from "../firebase";
 
 const Input = () => {
   const { data: session } = useSession();
 
   const [input, setInput] = useState("");
   const sendPost = async () => {
-    const docRef = await addDoc(collection(db, "posts"), {
+    const docRef = await addDoc(collection(db, "pos "), {
       id: session.user.uid,
       text: input,
     });
