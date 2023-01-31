@@ -3,7 +3,6 @@ import {
   addDoc,
   collection,
   serverTimestamp,
-  Timestamp,
   doc,
   updateDoc,
 } from "firebase/firestore";
@@ -43,9 +42,9 @@ const Input = () => {
     if (selectedFile) {
       await uploadString(imageRef, selectedFile, "data_url").then(async () => {
         const downloadURL = await getDownloadURL(imageRef);
-        // await updateDoc(doc(db, "posts", docRef.id), {
-        //   image: downloadURL,
-        // });
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image: downloadURL,
+        });
       });
     }
     setInput("");
@@ -75,6 +74,11 @@ const Input = () => {
                 onChange={(e) => setInput(e.target.value)}
               ></textarea>
             </div>
+            {selectedFile && (
+              <div className="">
+                <img src={selectedFile} alt="" />
+              </div>
+            )}
             <div className="flex items-center justify-between pt-2.5">
               <div className=" flex">
                 <div className="" onClick={() => filePickerRef.current.click()}>
@@ -93,7 +97,7 @@ const Input = () => {
               <button
                 onClick={sendPost}
                 disabled={!input.trim()}
-                className="bg-blue-400 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50"
+                className="bg-blue-4 00 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50"
               >
                 Tweet
               </button>
