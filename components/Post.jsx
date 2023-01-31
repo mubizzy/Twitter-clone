@@ -89,6 +89,27 @@ const Post = ({ post }) => {
         >
           <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
           <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
+          <div className="flex items-center">
+            {hasLiked ? (
+              <HeartIconFilled
+                onClick={likePost}
+                className="h-9 w-9 hoverEffect p-2 text-red-600 hover:bg-red-100"
+              />
+            ) : (
+              <HeartIcon
+                onClick={likePost}
+                className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100"
+              />
+            )}
+            {likes.length > 0 && (
+              <span
+                className={`${hasLiked && "text-red-600"} text-sm select-none`}
+              >
+                {" "}
+                {likes.length}
+              </span>
+            )}
+          </div>
           <HeartIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
           <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
           <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
