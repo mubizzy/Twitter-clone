@@ -6,14 +6,55 @@ import {
   ShareIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
-
+import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../firebase";
+import { signIn, useSession } from "next-auth/react";
+import { useState, useEffect } from "react";
 const Post = ({ post }) => {
+  const { data: session } = useSession();
+  const [likes, setLikes] = useState([]);
+  const [hasLiked, setHasLiked] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "posts", post.id, "likes"),
+      (snapshot) => setLikes(snapshot.docs)
+    );
+  }, [db]);
+
+  useEffect(() => {
+    setHasLiked(
+      likes.findIndex((like) => like.id === session?.user.uid) !== -1
+    );
+  }, [likes]);
+
+  async function likePost() {
+    if (session) {
+      if (hasLiked) {
+        await deleteDoc(doc(db, "posts", post.id, "likes", session?.user.uid));
+      } else {
+        await setDoc(doc(db, "posts", post.id, "likes", session?.user.uid), {
+          username: session.user.username,
+        });
+      }
+    } else {
+      signIn();
+    }
+  }
+
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-200">
       {/* user image */}
       <img
         className="h-11 w-11 rounded-full mr-4"
-        src={post.data().userimg}
+        src={post.userimg}
         alt="user-img"
       />
       {/* right side */}
@@ -24,7 +65,7 @@ const Post = ({ post }) => {
           {/* post user info */}
           <div className="flex items-center space-x-1 whitespace-nowrap">
             <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">
-              {post.data().name}
+              {post.name}
             </h4>
             <span className="text-sm sm:text-[15px]">@{post.username}-</span>
             <span className="text-sm sm:text-[15px] hover:underline">
