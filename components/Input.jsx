@@ -87,11 +87,7 @@ const Input = () => {
                   className="h-7 text-black absolute cursor-pointer shadow-md shadow-white rounded-full"
                   onClick={() => setSelectedFile(null)}
                 />
-                <img
-                  src={selectedFile}
-                  alt=""
-                  className={`${loading && "animate-pulse"}`}
-                />
+                <img src={selectedFile} alt="" className="" />
               </div>
             )}
 
