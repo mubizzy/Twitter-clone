@@ -20,6 +20,7 @@ const Input = () => {
   const filePickerRef = useRef(null);
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const addImageToPost = (e) => {
     const reader = new FileReader();
@@ -33,6 +34,9 @@ const Input = () => {
   };
 
   const sendPost = async () => {
+    if (loading) return;
+    setLoading(true);
+
     const docRef = await addDoc(collection(db, "posts "), {
       id: session.user.uid,
       text: input,
@@ -84,7 +88,11 @@ const Input = () => {
                   className="h-7 text-black absolute cursor-pointer shadow-md shadow-white rounded-full"
                   onClick={() => setSelectedFile(null)}
                 />
-                <img src={selectedFile} alt="" />
+                <img
+                  src={selectedFile}
+                  alt=""
+                  className={`${loading && "animate-pulse"}`}
+                />
               </div>
             )}
             <div className="flex items-center justify-between pt-2.5">
