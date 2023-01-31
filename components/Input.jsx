@@ -1,4 +1,8 @@
-import { EmojiHappyIcon, PhotographIcon } from "@heroicons/react/outline";
+import {
+  EmojiHappyIcon,
+  PhotographIcon,
+  XIcon,
+} from "@heroicons/react/outline";
 import {
   addDoc,
   collection,
@@ -49,7 +53,7 @@ const Input = () => {
     }
     setInput("");
 
-    // setSelectedFile(null);
+    setSelectedFile(null);
     // setLoading(false);
   };
 
@@ -75,7 +79,11 @@ const Input = () => {
               ></textarea>
             </div>
             {selectedFile && (
-              <div className="">
+              <div className="relative">
+                <XIcon
+                  className="h-7 text-black absolute cursor-pointer shadow-md shadow-white rounded-full"
+                  onClick={() => setSelectedFile(null)}
+                />
                 <img src={selectedFile} alt="" />
               </div>
             )}
@@ -88,7 +96,7 @@ const Input = () => {
                     type="file"
                     hidden
                     ref={filePickerRef}
-                    onClick={addImageToPost}
+                    onChange={addImageToPost}
                   />
                 </div>
 
