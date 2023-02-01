@@ -1,5 +1,6 @@
 import React from "react";
 import { SparklesIcon } from "@heroicons/react/outline";
+import { AnimatePresence, motion } from "framer-motion";
 import Input from "./Input";
 import Post from "./Post";
 
