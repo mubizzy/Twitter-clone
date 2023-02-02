@@ -99,7 +99,10 @@ const Post = ({ post }) => {
           className="flex justify-between text-gray-500 p-2
         "
         >
-          <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+          <ChatIcon
+            onClick={() => setOpen(!open)}
+            className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100"
+          />
           {/* {session.user.uid === post.id && (
             <TrashIcon
               onClick={deletePost}
