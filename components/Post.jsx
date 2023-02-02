@@ -14,9 +14,10 @@ import {
   onSnapshot,
   setDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, storage } from "../firebase";
 import { signIn, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { deleteObject, ref } from "firebase/storage";
 const Post = ({ post }) => {
   const { data: session } = useSession();
   const [likes, setLikes] = useState([]);
@@ -49,6 +50,14 @@ const Post = ({ post }) => {
     }
   }
 
+  async function deletePost() {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      deleteDoc(doc(db, "posts", post.id));
+      if (post.data().image) {
+        deleteObject(ref(storage, `posts/${post.id}/image`));
+      }
+    }
+  }
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-200">
       {/* user image */}
@@ -88,6 +97,12 @@ const Post = ({ post }) => {
         "
         >
           <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+          {/* {session.user.uid === post.id && (
+            <TrashIcon
+              onClick={deletePost}
+              className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100"
+            />
+          )} */}
           <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
           <div className="flex items-center">
             {hasLiked ? (
@@ -110,7 +125,7 @@ const Post = ({ post }) => {
               </span>
             )}
           </div>
-          <HeartIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
+          {/* <HeartIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" /> */}
           <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
           <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
         </div>
