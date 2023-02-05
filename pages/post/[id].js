@@ -11,11 +11,28 @@ import {
 import Comment from "../../components/comment";
 
 
-export const PostPage({ newsResults, randomUsersResults }) = () => {
+export const PostPage({ newsResults, randomUsersResults }) = ()=> {
     const router = useRouter();
     const { id } = router.query;
     const [post, setPost] = useState();
     const [comments, setComments] = useState([]);
   
-  return <div>[id]</div>;
+    useEffect(
+        () => onSnapshot(doc(db, "posts", id), (snapshot) => setPost(snapshot)),
+        [db, id]
+      );
+
+      // get comments of the post
+
+  useEffect(() => {
+    onSnapshot(
+      query(
+        collection(db, "posts", id, "comments"),
+        orderBy("timestamp", "desc")
+      ),
+      (snapshot) => setComments(snapshot.docs)
+    );
+  }, [db, id]);
+
+  return(<div>[id]</div>) ;
 };
