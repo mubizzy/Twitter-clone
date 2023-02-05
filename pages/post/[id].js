@@ -6,9 +6,16 @@ import {
   onSnapshot,
   orderBy,
   query,
-} from "firebase/firestore";
+} fro
+ "firebase/firestore";
 import Comment from "../../components/comment";
 
-export const [id] = () => {
+
+export const PostPage({ newsResults, randomUsersResults }) = () => {
+    const router = useRouter();
+    const { id } = router.query;
+    const [post, setPost] = useState();
+    const [comments, setComments] = useState([]);
+  
   return <div>[id]</div>;
 };
