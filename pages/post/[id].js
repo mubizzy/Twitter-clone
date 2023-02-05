@@ -6,7 +6,7 @@ import {
   onSnapshot,
   orderBy,
   query,
-} fro
+} from
  "firebase/firestore";
 import Comment from "../../components/comment";
 
