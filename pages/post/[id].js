@@ -7,6 +7,7 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+import Comment from "../../components/comment";
 
 export const [id] = () => {
   return <div>[id]</div>;
